@@ -36,7 +36,7 @@ export async function createPromo(formData: FormData) {
   }
 }
 
-export async function deletePromo(id: number) {
+export async function deletePromo(id: string) {
   try {
     await prisma.promoCampaign.delete({
       where: { id }
@@ -48,7 +48,7 @@ export async function deletePromo(id: number) {
   }
 }
 
-export async function updatePromo(id: number, formData: FormData) {
+export async function updatePromo(id: string, formData: FormData) {
   const judulKampanye = formData.get("judul") as string;
   const brandMekanisme = formData.get("brand") as string;
   const waktuMulai = new Date(formData.get("waktuMulai") as string);
