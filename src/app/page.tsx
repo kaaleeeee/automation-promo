@@ -4,6 +4,7 @@ import { CreatePromoDialog } from '@/components/CreatePromoDialog';
 import { PrismaClient } from '@prisma/client';
 import { logoutAdmin } from '@/app/actions';
 import { PromoActions } from '@/components/PromoActions';
+import { ThemeToggle } from '@/components/ThemeToggle';
 
 const prisma = new PrismaClient();
 
@@ -56,13 +57,15 @@ export default async function DashboardPage() {
               <p className="mt-0.5 truncate text-[11px] font-medium uppercase tracking-wide text-muted-foreground/80">MARCOMM DEPT</p>
             </div>
           </div>
-          <div className="shrink-0 bg-border h-px w-full my-3"></div>
-          <form action={logoutAdmin} className="w-full">
-            <button type="submit" className="inline-flex w-full items-center gap-2 rounded-md px-3 py-2 text-xs font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground text-left">
-              <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 256 256" className="size-4"><path d="M120,216a8,8,0,0,1-8,8H48a8,8,0,0,1-8-8V40a8,8,0,0,1,8-8h64a8,8,0,0,1,0,16H56V208h56A8,8,0,0,1,120,216Zm109.66-93.66-40-40a8,8,0,0,0-11.32,11.32L204.69,120H112a8,8,0,0,0,0,16h92.69l-26.35,26.34a8,8,0,0,0,11.32,11.32l40-40A8,8,0,0,0,229.66,122.34Z"></path></svg>
-              Keluar
-            </button>
-          </form>
+          <div className="mt-4 flex flex-col gap-1">
+            <ThemeToggle />
+            <form action={logoutAdmin} className="w-full">
+              <button type="submit" className="flex w-full items-center gap-3 rounded-md px-3 py-2 text-sm font-medium hover:bg-muted text-red-500 hover:text-red-600 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 256 256" className="size-4"><path d="M120,216a8,8,0,0,1-8,8H48a8,8,0,0,1-8-8V40a8,8,0,0,1,8-8h64a8,8,0,0,1,0,16H56V208h56A8,8,0,0,1,120,216Zm109.66-93.66-40-40a8,8,0,0,0-11.32,11.32L204.69,120H112a8,8,0,0,0,0,16h92.69l-26.35,26.34a8,8,0,0,0,11.32,11.32l40-40A8,8,0,0,0,229.66,122.34Z"></path></svg>
+                <span>Keluar</span>
+              </button>
+            </form>
+          </div>
         </div>
       </aside>
 
