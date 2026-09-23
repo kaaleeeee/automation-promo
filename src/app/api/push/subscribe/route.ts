@@ -23,11 +23,11 @@ export async function POST(request: NextRequest) {
       where: { endpoint: body.endpoint },
       create: {
         endpoint: body.endpoint,
-        keys: body.keys,
+        keys: JSON.stringify(body.keys),
         userAgent: body.userAgent ?? null,
       },
       update: {
-        keys: body.keys,
+        keys: JSON.stringify(body.keys),
         userAgent: body.userAgent ?? null,
       },
     });
