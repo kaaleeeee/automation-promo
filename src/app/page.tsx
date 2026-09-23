@@ -5,6 +5,7 @@ import { PrismaClient } from '@prisma/client';
 import { logoutAdmin } from '@/app/actions';
 import { PromoActions } from '@/components/PromoActions';
 import { ThemeToggle } from '@/components/ThemeToggle';
+import { SidebarNav } from '@/components/SidebarNav';
 
 const prisma = new PrismaClient();
 
@@ -41,14 +42,7 @@ export default async function DashboardPage() {
             </div>
           </div>
           <nav className="flex flex-col gap-1">
-            <Link href="/" className="group flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium bg-secondary text-secondary-foreground transition-colors">
-              <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 256 256" className="size-4 shrink-0"><path d="M224,120v96a8,8,0,0,1-8,8H160a8,8,0,0,1-8-8V164a4,4,0,0,0-4-4H108a4,4,0,0,0-4,4v52a8,8,0,0,1-8,8H40a8,8,0,0,1-8-8V120a16,16,0,0,1,4.69-11.31l80-80a16,16,0,0,1,22.62,0l80,80A16,16,0,0,1,224,120Z"></path></svg>
-              <span className="flex-1 text-left">Dashboard</span>
-            </Link>
-            <Link href="#" className="group flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors cursor-not-allowed opacity-50">
-              <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 256 256" className="size-4 shrink-0"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216ZM173.66,98.34a8,8,0,0,1,0,11.32l-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35A8,8,0,0,1,173.66,98.34Z"></path></svg>
-              <span className="flex-1 text-left">Observasi (Segera)</span>
-            </Link>
+            <SidebarNav />
           </nav>
         </div>
         <div className="border-t p-4">
