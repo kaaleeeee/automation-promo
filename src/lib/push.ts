@@ -54,7 +54,7 @@ export async function broadcastPush(payload: PushPayload) {
         await webpush.sendNotification(
           {
             endpoint: sub.endpoint,
-            keys: sub.keys as { p256dh: string; auth: string },
+            keys: JSON.parse(sub.keys as string) as { p256dh: string; auth: string },
             expirationTime: null,
           },
           message
