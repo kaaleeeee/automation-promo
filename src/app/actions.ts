@@ -16,6 +16,9 @@ export async function createPromo(formData: FormData) {
   
   const urlSkuMaterial = formData.get("urlDrive") as string;
 
+  // Status otomatis: jika waktu mulai sudah lewat, langsung ACTIVE (tanpa tunggu cron)
+  const status = waktuMulai <= new Date() ? "ACTIVE" : "SCHEDULED";
+
   try {
     await prisma.promoCampaign.create({
       data: {
@@ -24,6 +27,7 @@ export async function createPromo(formData: FormData) {
         waktuMulai,
         waktuBerakhir,
         urlSkuMaterial,
+        status,
       },
     });
 
@@ -55,6 +59,9 @@ export async function updatePromo(id: string, formData: FormData) {
   const waktuBerakhir = new Date(formData.get("waktuBerakhir") as string);
   const urlSkuMaterial = formData.get("urlDrive") as string;
 
+  // Status otomatis: jika waktu mulai sudah lewat, langsung ACTIVE (tanpa tunggu cron)
+  const status = waktuMulai <= new Date() ? "ACTIVE" : "SCHEDULED";
+
   try {
     await prisma.promoCampaign.update({
       where: { id },
@@ -64,6 +71,7 @@ export async function updatePromo(id: string, formData: FormData) {
         waktuMulai,
         waktuBerakhir,
         urlSkuMaterial,
+        status,
       },
     });
     revalidatePath("/");
