@@ -29,7 +29,7 @@ model PromoCampaign {
 model PushSubscription {
   id        String   @id @default(cuid())
   endpoint  String   @unique
-  keys      Json
+  keys      String   // JSON string {"p256dh": "...", "auth": "..."}
   userAgent String?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
