@@ -18,4 +18,19 @@ model PromoCampaign {
   status           String   @default("SCHEDULED") // SCHEDULED, ACTIVE, COMPLETED
   createdAt        DateTime @default(now())
   updatedAt        DateTime @updatedAt
+
+  // Idempotensi notifikasi: cegah pengiriman dobel saat cron berjalan berkali-kali
+  notifStartSent       Boolean @default(false)
+  notifStartReminderSent Boolean @default(false)
+  notifEndReminderSent Boolean @default(false)
+  notifEndSent         Boolean @default(false)
+}
+
+model PushSubscription {
+  id        String   @id @default(cuid())
+  endpoint  String   @unique
+  keys      Json
+  userAgent String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
