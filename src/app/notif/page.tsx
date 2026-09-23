@@ -1,6 +1,7 @@
 import React from "react";
 import { PrismaClient } from "@prisma/client";
 import { PushNotificationManager } from "@/components/PushNotificationManager";
+import { TestNotifButton } from "@/components/TestNotifButton";
 import Link from "next/link";
 
 const prisma = new PrismaClient();
@@ -137,6 +138,14 @@ export default async function NotifPage() {
               Status promo terkini. Notifikasi HP aktif otomatis saat halaman ini dibuka di browser
               HP (PWA).
             </p>
+          </div>
+
+          <div className="rounded-xl border bg-card p-4 shadow-sm">
+            <h2 className="text-sm font-semibold text-foreground">Cek Notifikasi</h2>
+            <p className="mb-3 mt-0.5 text-xs text-muted-foreground">
+              Pastikan sudah Install App + izinkan notifikasi, lalu tekan tombol untuk tes kirim.
+            </p>
+            <TestNotifButton />
           </div>
 
           <Section
