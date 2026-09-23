@@ -8,6 +8,8 @@ import { ThemeToggle } from '@/components/ThemeToggle';
 
 const prisma = new PrismaClient();
 
+export const dynamic = "force-dynamic";
+
 export default async function DashboardPage() {
   const campaigns = await prisma.promoCampaign.findMany({
     orderBy: { createdAt: 'desc' }
