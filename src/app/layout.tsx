@@ -1,5 +1,7 @@
-import type { Metadata } from "next";
+import { ThemeProvider } from "@/components/ThemeProvider";
+import { PushNotificationManager } from "@/components/PushNotificationManager";
 import { Geist, Geist_Mono } from "next/font/google";
+import type { Metadata } from "next";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -12,21 +14,32 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-import { ThemeProvider } from "@/components/ThemeProvider";
-
 export const metadata: Metadata = {
   title: "Dashboard - Promo Automation",
   description: "Sistem Manajemen Promo Beauty Kendari",
+  manifest: "/manifest.json",
+  applicationName: "Promo Auto",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "Promo Auto",
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
-      lang="en"
+      lang="id"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
       suppressHydrationWarning
     >
+      <head>
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="theme-color" content="#09090b" />
+      </head>
       <body className="min-h-full flex flex-col bg-background text-foreground">
+        <PushNotificationManager />
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           {children}
         </ThemeProvider>
