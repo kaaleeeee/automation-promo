@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { PushNotificationManager } from "@/components/PushNotificationManager";
+import { TestNotifButton } from "@/components/TestNotifButton";
 
 export default function ReminderPage() {
   return (
@@ -36,8 +37,8 @@ export default function ReminderPage() {
                 </p>
               </div>
               <div className="mt-4">
-                <div className="text-xs text-muted-foreground">Verifikasi Service Worker</div>
-                <div className="text-xs text-muted-foreground mt-1">Status: menunggu install</div>
+                <TestNotifButton />
+                <div className="text-xs text-muted-foreground mt-2">Status: menunggu install</div>
               </div>
             </div>
           </div>
